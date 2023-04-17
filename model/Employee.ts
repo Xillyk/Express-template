@@ -1,7 +1,7 @@
-const moongose = require("mongoose");
+import moongose from "mongoose";
 const Schema = moongose.Schema;
 
-const exployeeSchema = new Schema({
+const employeeSchema = new Schema({
   firstname: {
     type: String,
     required: true,
@@ -12,4 +12,4 @@ const exployeeSchema = new Schema({
   },
 });
 
-module.exports = moongose.model("Employee", exployeeSchema);
+export default moongose.model("Employee", employeeSchema);
