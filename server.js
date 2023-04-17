@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const cors = require("cors");
+const helmet = require("helmet");
 const corsOptions = require("./config/corsOptions");
 const { logger } = require("./middleware/logEvents");
 const errorHandler = require("./middleware/errorHandler");
@@ -16,6 +17,9 @@ const PORT = process.env.PORT || 3500;
 
 // connect to MongoDB
 connectDB();
+
+// helmet middleware
+app.use(helmet());
 
 // custom middleware logger
 app.use(logger);
