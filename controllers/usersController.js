@@ -24,13 +24,20 @@ const deleteUser = async (req, res) => {
 const getUser = async (req, res) => {
   if (!req?.params?.id)
     return res.status(400).json({ message: "User ID Required" });
-  const user = await User.findOne({ _id: req.params.id }).exec();
-  if (!user) {
-    return res
-      .status(204)
-      .json({ message: `User ID: ${req.params.id} not found` });
+  
+  try {
+    const user = await User.findOne({ _id: req.params.id }).exec();
+    if (!user) {
+      return res
+        .status(204)
+        .json({ message: `User ID: ${req.params.id} not found` });
+    }
+    res.json(user);
+    
+  } catch (error) {
+    console.log(error)
+    res.sendStatus(500)
   }
-  res.json(user);
 };
 
 module.exports = {
