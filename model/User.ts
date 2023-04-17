@@ -1,4 +1,4 @@
-const moongose = require("mongoose");
+import moongose from "mongoose";
 const Schema = moongose.Schema;
 
 const userSchema = new Schema({
@@ -21,4 +21,4 @@ const userSchema = new Schema({
   refreshToken: String,
 });
 
-module.exports = moongose.model("User", userSchema);
+export default moongose.model("User", userSchema);
